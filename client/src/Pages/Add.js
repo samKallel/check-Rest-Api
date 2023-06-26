@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addContact, getContact } from '../JS/Actions/contact';
 import { Button, Form } from 'react-bootstrap';
 import Contact from './Contact';
+import { useNavigate } from 'react-router-dom';
 
 const Add = () => {
   const [newContact, setNewContact] = useState({
@@ -10,11 +11,13 @@ const Add = () => {
     email:"",
     phone:""});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleChange = (e) => {
    setNewContact({...newContact, [e.target.name]: e.target.value});
   };
  const add =()=>{
     dispatch(addContact(newContact));
+    navigate('/contact');
     
  };
   return (
