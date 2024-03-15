@@ -1,36 +1,32 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import {Card, Button} from "react-bootstrap";
-import { deleteContact } from '../JS/Actions/contact';
-
-
-const ContactCard = ({contact}) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+import React from "react";
+import { Card, Button } from "react-bootstrap";
+import {useDispatch} from 'react-redux'
+import {deleteContact} from '../JS/Actions/contact'
+import { useNavigate } from "react-router-dom";
+const ContactCard = ({ contact }) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   return (
     <div>
-       <Card style={{ width: '18rem', margin: "5%" }}>
-      <Card.Img variant="top" src="data:image/png;base64,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" />
-      <Card.Body>
-        <Card.Title>{contact.name}</Card.Title>
-        <Card.Text>{contact.email}</Card.Text>
-        <Card.Text>{contact.phone}</Card.Text>
-        <Button variant="primary" 
-        onClick={()=>navigate(`/edit/${contact._id}`)}
-        style={{margin:"2%"}}>
-          Edit
-          </Button>
-        <Button variant="primary" 
-        onClick={()=>dispatch(deleteContact(contact._id))}
-        style={{margin:"2%"}}>
-          Delete
-          </Button>
-      </Card.Body>
-    </Card> 
+      {" "}
+      <Card style={{ width: "18rem" }}>
+        <Card.Img
+          variant="top"
+          src="data:image/png;base64,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"
+          alt="ph"
+        />
+        <Card.Body>
+          <Card.Title>{contact.name}</Card.Title>
+          <Card.Text>
+            {contact.email} <br />
+            {contact.phone}
+          </Card.Text>
+          <Button variant="primary" onClick={()=>navigate(`/edit/${contact._id}`)}>Edit </Button>
+          <Button variant="primary" onClick={()=>dispatch(deleteContact(contact._id))}>Delete</Button>
+        </Card.Body>
+      </Card>
     </div>
-  )
-}
+  );
+};
 
-export default ContactCard
+export default ContactCard;

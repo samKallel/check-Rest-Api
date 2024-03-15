@@ -1,12 +1,15 @@
 const express= require ('express');
 const app = express();
 require('dotenv').config();
-app.use(express.json());
+//connecxion bd
 const connectDB = require('./Config/connectDB');
 connectDB();
+
+//middleware
+app.use(express.json());
 app.use('/api/contact', require('./Routes/contact'))
 
-
+//server
 const PORT= process.env.PORT;
 app.listen(PORT, (err)=>{
     err

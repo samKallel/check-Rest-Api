@@ -1,5 +1,5 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import contactReducer from "./contact";
 
-const rootReducer = combineReducers({ contactReducer});
+const rootReducer = combineReducers({ contactReducer });
 export default rootReducer;
