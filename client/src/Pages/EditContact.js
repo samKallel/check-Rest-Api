@@ -15,7 +15,7 @@ const EditContact = () => {
   const match = useMatch('/edit/:id')
   useEffect(() => {
     dispatch(getContact(match.params.id))
-  }, [])
+  }, [dispatch, match])
   const edit =()=>{
     dispatch(editContact(match.params.id, contactToEdit))
     navigate(-1)
